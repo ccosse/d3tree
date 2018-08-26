@@ -39,7 +39,6 @@ var i = 0,
 		root;
 
 d3.csv("d3project.csv", function(error, data) {
-	if (error) throw error;
 
 	root = stratify(data)
 			//.sort(function(a, b) {
