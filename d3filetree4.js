@@ -7,13 +7,12 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
 /*global d3*/
 (function (d3) {
-    d3.layout.treelist = function () {
+    d3.treelist = function () {
         "use strict";
-        var hierarchy = d3.layout.hierarchy().sort(null).value(null),
+        var hierarchy = d3.hierarchy().sort(null).value(null),
             nodeHeight = 20,
             childIndent = 50,
             size;
-
         var treelist = function (d, i) {
             var nodes = hierarchy.call(this, d, i),
                 root = nodes[0];
@@ -30,9 +29,7 @@
                 }
             }
 
-            /**
-             visit all nodes in the tree and set the x, y positions
-            */
+            //visit all nodes in the tree and set the x, y positions
             function layout(node) {
                 //all children of the same parent are rendered on the same  x level
                 //y increases every time a child is added to the list
@@ -76,5 +73,4 @@
 
         return treelist;
     };
-
 }(d3));

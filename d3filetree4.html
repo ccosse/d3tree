@@ -22,17 +22,28 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="d3filetree.js"></script>
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="d3filetree4.js"></script>
 <script type="application/javascript">
 	var id = 0;
+
+var stratify = d3.stratify()
+		.parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+d3.csv("d3project.csv", function(error, data) {
+	//data = stratify(data)
+	var tree = d3.treelist()
+	//	.childIndent(30)
+	//	.nodeHeight(30);
+/*
 	d3.json("flare.json", function (err, data) {
-		var tree = d3.layout.treelist()
+		var tree = d3.treelist()
 			.childIndent(30)
 			.nodeHeight(30);
 
 		var ul = d3.select("body").append("ul").classed("treelist", "true");
-
+*/
+/*
 		function render(data, parent) {
 			var nodes = tree.nodes(data),
 				duration = 250;
@@ -95,7 +106,7 @@
 		}
 
 		render(data, data);
-
+*/
 	});
 </script>
 <body>
